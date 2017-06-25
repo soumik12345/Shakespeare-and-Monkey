@@ -2,9 +2,11 @@ class DNA
 {
     char gene[]=new char[18];//each element in this gene array represents a new gene
     float fitness;
-
-    DNA()
+    int targetLen;
+    DNA(int T)
     {
+        targetLen=T;
+        gene=new char[targetLen];
         for(int i=0;i<gene.length;i++)
             gene[i]=(char)(32+(int)(Math.random()*128));
     }
@@ -20,7 +22,7 @@ class DNA
 
     DNA crossover(DNA partner)
     {
-        DNA child=new DNA();//new DNA for the child
+        DNA child=new DNA(targetLen);//new DNA for the child
         int midpoint=(int)(Math.random()*(gene.length-1));//selecting a random midpoint in the genes array
         for(int i=0;i<gene.length;i++)
         {
