@@ -4,16 +4,18 @@ class Shakespearean_monkey
 {
     DNA population[];//The DNA of the population
     String target;//The target string that is to be achieved
+    int targetLength;
     ArrayList<DNA> matingPool;//The mating pool for each generation
     float mutationRate;
 
     Shakespearean_monkey(String s, int p, float m)//target and DNA is initialized
     {
         population=new DNA[p];
-        for(int i=0;i<population.length;i++)
-            population[i]=new DNA();
         target=s;
+        targetLength=target.length();
         mutationRate=m;
+        for(int i=0;i<population.length;i++)
+            population[i]=new DNA(targetLength);
     }
 
     void process()
@@ -36,7 +38,7 @@ class Shakespearean_monkey
             }
 
             //REPRODUCTION
-            DNA child=new DNA();
+            DNA child=new DNA(targetLength);
             for(int i=0;i<population.length;i++)
             {
                 //choosing two random indices from the matingPool ArrayList
